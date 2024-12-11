@@ -1,0 +1,38 @@
+       table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+        body {
+            text-align: center;
+        }
+
+        #container {
+            margin: 0 auto;
+            /*width: xxxpx;*/
+            text-align: left;
+        }
+        #text-container {
+            margin: auto;
+            width: 700px;
+            text-align: left;
+        }
+        h1 {
+            color: darkgreen;
+        }
+        a {
+            font-size: x-large;
+            color: darkblue;
+        }
+        #question {
+            color: darkblue;
+            font-size: large;
+        }
+        #answer {
+            color: green;
+        }
+
+input[type=submit] {padding:5px 15px; background:#ccc; border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+font-size: xx-large}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Welcome Admin</h1>
+
+Choose one of the following admin actions:
+<p>
+<form action="{% url 'admin_actions' %}" method="get">
+    File Name: <input type="text" name="fname"><br>
+    <input type="submit" name="users" value="generate users"><br>
+    <input type="submit" name="projects" value="update projects"><br>
+    <input type="submit" name="write_users" value="write users to file"><br>
+    <input type="submit" name="write_bids" value="write bids to file"><br>
+</form>
+</p>
+</body>
+</html>

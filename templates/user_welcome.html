@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Project Bidding App</h1>
+<p>{{ message }}</p>
+Click on "Bid on projects" to make your bids. You have a total of 2000 bidding points. You must bid on a minimum of 8 projects and you may bid a maximum of 1000 points on any one project. There
+is no advantage in bidding early because I'll allocate projects only after the bid system closes.
+
+Please note that this is not a professional app and I am assuming that you will bid in good faith. Any attempt to "hack" or "game" the bidding process will be
+treated as a violation of <a href="https://studentconduct.columbia.edu/content/policies">university policy</a> and may be subject to disciplinary action.
+<p></p>
+<a href="{% url 'make_bids' %}">Bid on projects</a><br>
+<a href="https://docs.google.com/spreadsheets/d/1pV5VmUQTKngFoQTKjBKzGtzmhL-3PoJRGxnvcR6p5Pk/edit?usp=sharing" target="blank">View project details</a><br>
+<a href="{% url 'help' %}">FAQ</a><br>
+</body>
+</html>

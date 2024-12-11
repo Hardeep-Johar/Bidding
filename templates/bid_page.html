@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+            height: 500px; /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+{% load static %}
+<script src="{% static 'update.js' %}"></script>
+<script src="{% static 'verify.js' %}"></script>
+
+
+<h1>Make Your Bids</h1>
+<h2>{{ user.first_name }} {{ user.last_name }}</h2>
+<h2>Points available: <input style="font-size: xx-large" type="text" value="{{ points }}" id="total" readonly></h2>
+<form action="do_alloc" method="get">
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+            <p>
+            <table>
+                {% for project1 in c1 %}
+                    <tr>
+                        <td>{{ project1.0.project_id }}</td>
+                        {% if project1.1 != 0 %}
+                            <td><input class="bid" style="color:red" type="number" name="{{ project1.0.project_id }}" placeholder="0"
+                                       value="{{ project1.1 }}" min="0" max="1000" onchange="return update(this,{{ maxbid }})"></td>
+
+
+                        {% else %}
+                            <td><input class="bid" style="color:lightgray" type="number"
+                                       name="{{ project1.0.project_id }}" min="0" max="1000" value="{{ project1.1 }}"
+                                       onchange="update(this,{{ maxbid }})"></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+            <p>
+            <table>
+                {% for project2 in c2 %}
+                    <tr>
+                        <td>{{ project2.0.project_id }}</td>
+                        {% if project2.1 != 0 %}
+                            <td><input class="bid" style="color:red" type="number" name="{{ project2.0.project_id }}"
+                                       value="{{ project2.1 }}" min="0" max="1000" onchange="update(this,{{ maxbid }})"></td>
+                        {% else %}
+                            <td><input class="bid" style="color:lightgray" type="number"
+                                       name="{{ project2.0.project_id }}" min="0" max="1000" value="{{ project2.1 }}"
+                                       onchange="update(this,{{ maxbid }})"></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+
+            </table>
+            </p>.
+        </div>
+        <div class="column" style="background-color:#ccc;">
+            <p>
+            <table>
+                {% for project3 in c3 %}
+                    <tr>
+                        <td>{{ project3.0.project_id }}</td>
+                        {% if project3.1 != 0 %}
+                            <td><input class="bid" id="{{ project3.0.project_id }}" style="color:red" type="number"
+                                       name="{{ project3.0.project_id }}" value="{{ project3.1 }}" min="0" max=1000
+                                       onchange="update(this,{{ maxbid }})"></td>
+                        {% else %}
+                            <td><input class="bid" style="color:lightgray" type="number"
+                                       name="{{ project3.0.project_id }}" min="0" max="1000" value="{{ project3.1 }}"
+                                       onchange="update(this,{{ maxbid }})"></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+            </p>
+        </div>
+    </div>
+    <input  type="submit" value="submit" onclick="return verify({{ minbids }})">
+</form>
+</body>
+</html>
+
